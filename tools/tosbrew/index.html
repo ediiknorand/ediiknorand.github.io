@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TOS: Arcanum Brewing Solver</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" type="text/css" href="./tosbrew.css">
+</head>
+<body>
+  <h1>Tree of Savior Arcanum Brewing Solver (WIP)</h1>
+  <div class="row">
+    <div class="column" id="left">
+      <div id="grid" class="board"></div>
+    </div>
+    <div class="column" id="right">
+      <div class="instructions">
+        Instructions:
+        <ol>
+          <li>Select one of the filling modes below ([S], [?], [X]);</li>
+          <li>Fill the map on the left according to the in-game formula;</li>
+          <li>Click the "Solve" button;</li>
+          <li>Apply the materials in order;</li>
+          <li>Reset with the "Clear" button.</li>
+        </ol>
+      </div>
+      <div id="fillmode" class="controls">
+        <input type="radio" name="filloption" checked id="radio_start"
+        onclick="switch_mode(MODE_START)"/>
+        <label for="radio_start" class="setmode">Starting point [S]</label>
+        <input type="radio" name="filloption" id="radio_goal"
+        onclick="switch_mode(MODE_GOAL)"/>
+        <label for="radio_goal" class="setmode">Treasures [?]</label>
+        <input type="radio" name="filloption" id="radio_wall"
+        onclick="switch_mode(MODE_WALL)"/>
+        <label for="radio_wall" class="setmode">Walls [X]</label>
+      </div>
+      <div class="controls">
+        <button id="run" class="operator"
+        onclick="PopulateSolution()">Solve</button>
+        <button id="clear" class="operator"
+        onclick="ClearSolution()">Clear</button>
+      </div>
+      <div>
+        NOTE: It does not return actual materials. (It is a work in progress)
+      </div>
+      <ol id="solution"></ol>
+    </div>
+  </div>
+  <div class="credits">Made by [Silute]Knorand.</div>
+  <script type="text/javascript" src="./pqueue.js"></script>
+  <script type="text/javascript" src="./tosbrew.js"></script>
+</body>
+</html>

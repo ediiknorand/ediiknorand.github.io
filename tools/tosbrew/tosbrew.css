@@ -1,0 +1,129 @@
+body {
+  font-size: 100%;
+  background-color: #e5e6e1;
+}
+
+h1 {
+  text-align: center;
+  padding: 20px;
+  background-color: #9fdaed;
+  border-radius: 6px;
+}
+
+@media (min-width: 480px) {
+  .instructions {
+    display: none;
+  }
+}
+@media (min-width: 1060px) {
+  .row {
+    display: flex;
+  }
+  .column {
+    flex: 50%;
+  }
+  .instructions {
+    display: block;
+  }
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(19, 1fr);
+  width: 475px;
+  height: 475px;
+  margin: auto;
+  padding: 10px;
+}
+
+.cell {
+  border: 1px solid #deaa28;
+  border-radius: 0px;
+}
+
+.cell:disabled {
+  opacity: 60%;
+  --webkit-user-select: none;
+  --ms-user-select: none;
+  user-select: none;
+}
+.cell-plain {
+  background-color: #f1f2d3;
+  color: #f1f2d3;
+}
+.cell-start {
+  background-color: #b177f7;
+  color: white;
+}
+.cell-goal {
+  background-color: #de980d;
+  color: white;
+}
+.cell-wall {
+  background-color: #f02b24;
+  color: white;
+}
+
+.path {
+  background-color: #7d8a9e;
+}
+
+#right {
+  align: center;
+  padding: 20px;
+  background-color: #9fdaed;
+  border-radius: 6px;
+}
+
+.instructions {
+  padding: 10px;
+  font-size: 18px;
+}
+
+.controls {
+  padding: 20px;
+  text-align: center;
+}
+
+input[type=radio]{display: none}
+input[type=radio] + label.setmode {
+  display: inline;
+  border: 2px solid black;
+  border-radius: 6px;
+  padding: 8px;
+  font-size: 24px;
+  transition: all 0.3s;
+  --webkit-user-select: none;
+  --ms-user-select: none;
+  user-select: none;
+}
+input[type=radio]:checked + label.setmode {
+  background-color: #0088cc;
+}
+input[type=radio]:disabled + label.setmode {
+  opacity: 60%;
+}
+
+.operator {
+  font-size: 18px;
+  border-radius: 10px;
+  background-color: #e7e7e7;
+  padding: 8px;
+  transition: all 0.3s;
+}
+
+.material {
+  font-size: 24px;
+  padding: 5px;
+  border-radius: 6px;
+}
+
+.material:hover {
+  background-color: #0088cc;
+}
+
+.credits {
+  text-align: center;
+  font-size: 10px;
+  padding: 1%;
+}
