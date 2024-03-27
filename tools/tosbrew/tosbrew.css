@@ -10,7 +10,7 @@ h1 {
   border-radius: 6px;
 }
 
-@media (min-width: 480px) {
+@media (min-width: 0px) {
   .instructions {
     display: none;
   }
@@ -39,8 +39,11 @@ h1 {
 .cell {
   border: 1px solid #deaa28;
   border-radius: 0px;
+  transition: all 0.15s;
 }
-
+.cell:hover {
+  filter: brightness(85%);
+}
 .cell:disabled {
   opacity: 60%;
   --webkit-user-select: none;
@@ -85,6 +88,11 @@ h1 {
   text-align: center;
 }
 
+#fillmode {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
 input[type=radio]{display: none}
 input[type=radio] + label.setmode {
   display: inline;
@@ -116,6 +124,7 @@ input[type=radio]:disabled + label.setmode {
   font-size: 24px;
   padding: 5px;
   border-radius: 6px;
+  transition: all 0.15s;
 }
 
 .material:hover {

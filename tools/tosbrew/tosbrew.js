@@ -31,11 +31,23 @@ const DOWN = 'd';
 const LEFT = 'l';
 const RIGHT = 'r';
 
-// TODO: include actual materials
 const MATERIALS = {
-  '1r': 'Pyromancer\'s Leaf',
-  '1l1u': 'Gabija\'s Fire Crystal',
-  '1l1d': 'Popolion\'s Aether Gem'
+  '4r1u': 'Crimson Bloodstone - D4W1',
+  '4r1d': 'Amber Bloodstone - D4S1',
+  '4l1u': 'Rustmoss Seastone - A4W1',
+  '4l1d': 'Cerulean Seastone - A4S1',
+  '1l4d': 'Ironstone Shard - A1S4',
+  '1r4d': 'Yellow Chitin - D1S4',
+  '1l4u': 'Purple Chitin - A1W4',
+  '1r4u': 'Blue Chitin - D1W4',
+  '4r2u': 'Zelkova Leaves - D4W2',
+  '4r2d': 'Bamboo Cane - D4S2',
+  '4l2u': 'Red Mitella Flower - A4W2',
+  '4l2d': 'Millenium Forest Twig - A4S2',
+  '2l4d': 'Myriad Forest Twig - A2S4',
+  '2r4d': 'Twilight Bud - D2S4',
+  '2l4u': 'Crow Lake Grillagrass - A2W4',
+  '2r4u': 'Wide-Leaf Wasprout - D2W4'
 }
 
 /* Fill logic */
