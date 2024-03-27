@@ -54,6 +54,7 @@ const MATERIALS = {
 
 var fillmode = MODE_START;
 var startindex = 9 + 9*19;
+var highlightpath = [];
 
 function switch_mode(mode)
 {
@@ -373,6 +374,48 @@ function disable_editing(value)
   document.getElementById('radio_wall').disabled = value;
 }
 
+function get_path(index, material)
+{
+  let path = [index];
+  let movements = get_movements(material);
+  let x = index % 19;
+  let y = Math.floor(index/19);
+
+  for(let i = 0; i < movements.length; i++) {
+    for(let step = 0; step < movements[i].steps; step++) {
+      switch(movements[i].direction) {
+      case UP: y--; break;
+      case DOWN: y++; break;
+      case LEFT: x--; break;
+      case RIGHT: x++; break;
+      }
+      if(out_of_bounds(x, y) || cells[x + y*19] == CELL_WALL) break;
+      path.push(x + y*19);
+    }
+  }
+  return path;
+}
+
+function HoverMaterial(i)
+{
+  let path_info = highlightpath[i];
+  let path = get_path(path_info.index, path_info.material);
+  let grid = document.getElementById('grid').children;
+
+  for(let k = 0; k < path.length; k++)
+    grid[path[k]].classList.add('highlight');
+}
+
+function ClearHighlight(i)
+{
+  let path_info = highlightpath[i];
+  let path = get_path(path_info.index, path_info.material);
+  let grid = document.getElementById('grid').children;
+
+  for(let k = 0; k < path.length; k++)
+    grid[path[k]].classList.remove('highlight');
+}
+
 function PopulateSolution()
 {
   disable_editing(true);
@@ -380,12 +423,20 @@ function PopulateSolution()
   let goals = get_goals();
   let path = solve_tsp(goals).path;
 
+  let cur = startindex;
   let solution = document.getElementById('solution');
   for(let i = 0; i < path.length; i++) {
     let mat = document.createElement('li');
     mat.innerHTML = MATERIALS[path[i].material];
     solution.appendChild(mat);
     mat.classList.add('material');
+    highlightpath[i] = {
+      index: cur,
+      material: path[i].material
+    };
+    cur = path[i].index;
+    mat.onmouseenter = () => HoverMaterial(i);
+    mat.onmouseleave = () => ClearHighlight(i);
   }
 }
 
@@ -396,6 +447,7 @@ function ClearSolution()
 
   cells.fill(CELL_PLAIN);
   startindex = 9 + 9*19;
+  highlightpath = [];
 
   disable_editing(false);
   populate_grid();
