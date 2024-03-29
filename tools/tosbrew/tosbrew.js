@@ -372,6 +372,7 @@ function disable_editing(value)
   document.getElementById('radio_start').disabled = value;
   document.getElementById('radio_goal').disabled = value;
   document.getElementById('radio_wall').disabled = value;
+  document.getElementById('edit').disabled = !value;
 }
 
 function get_path(index, material)
@@ -440,7 +441,14 @@ function PopulateSolution()
   }
 }
 
-function ClearSolution()
+function EditGrid()
+{
+  document.getElementById('solution').innerHTML = '';
+  highlightpath = [];
+  disable_editing(false);
+}
+
+function ClearGrid()
 {
   document.getElementById('solution').innerHTML = '';
   document.getElementById('grid').innerHTML = '';
@@ -448,8 +456,8 @@ function ClearSolution()
   cells.fill(CELL_PLAIN);
   startindex = 9 + 9*19;
   highlightpath = [];
-
   disable_editing(false);
+
   populate_grid();
 }
 
